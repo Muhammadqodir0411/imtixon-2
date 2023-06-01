@@ -8,7 +8,6 @@ import { PORT, accessLogStream } from './config.js'
 import userRouter from './routers/user.router.js'
 import errorHandler from './middlewares/errorHandler.js'
 import adminRouter from "./routers/admin.router.js"
-import swaggerRouter from './swagger.js'
 const app = express() 
  
 
@@ -20,7 +19,6 @@ app.use(morgan("combined", {skip: function (req,res){return res.statusCode < 400
 
 app.use(userRouter)
 app.use(adminRouter)
-app.use(swaggerRouter)
 
 app.use(errorHandler)
 

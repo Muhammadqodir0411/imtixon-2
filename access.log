@@ -2,3 +2,5 @@
 ::1 - - [01/Jun/2023:11:31:46 +0000] "POST /login HTTP/1.1" 400 79 "-" "PostmanRuntime/7.32.2"
 ::1 - - [01/Jun/2023:11:33:32 +0000] "POST /admin/login HTTP/1.1" 401 33 "-" "PostmanRuntime/7.32.2"
 ::1 - - [01/Jun/2023:12:36:26 +0000] "GET /users HTTP/1.1" 500 77 "-" "Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) Chrome/113.0.0.0 Safari/537.36"
+::1 - - [01/Jun/2023:13:13:13 +0000] "POST /admin/addpost?date=vdvdv&meating_time=dvdv&categries=dvdv&works=vdvdv&types=dvdvd&link%0A=vdvdv&copany_name=vdvdv&name=dvdv&profession=v&phone_number=vdvdv&two_phone_num=vdvdv&description=dvdv&image=441&text=424242 HTTP/1.1" 404 153 "-" "PostmanRuntime/7.32.2"
+::1 - - [01/Jun/2023:13:26:34 +0000] "GET /admin/add-post?date&meating_time HTTP/1.1" 404 153 "-" "PostmanRuntime/7.32.2"

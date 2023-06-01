@@ -2,13 +2,11 @@ import { read, write } from "../utils/model.js";
 import jwt from "../utils/jwt.js";
 
 const LOGIN = (req, res, next) => {
-  
   try {
     const admins = read("admin");
     const { username, password } = req.body;
     const admin = admins.find(
-      (admin) =>
-        admin.admin_username == username && admin.password == password
+      (admin) => admin.admin_username == username && admin.password == password
     );
     if (!admin) {
       return res.status(401).json({ message: "Invalid Credentials" });
@@ -23,18 +21,48 @@ const LOGIN = (req, res, next) => {
   }
 };
 
-const addPost = (req, res, next)=> {
+const addPost = async (req, res, next) => {
   try {
-    
-    const body = req.body
-
-
+    const data = read("activate");
+    const {
+      date,
+      meating_time,
+      categries,
+      works,
+      types,
+      link,
+      copany_name,
+      name,
+      profession,
+      phone_number,
+      two_phone_num,
+      description,
+      image,
+      text,
+    } = await req.body;
+    const newPosts = {
+      id: data.at(-1).id + 1 || 1,
+      date,
+      meating_time,
+      categries,
+      works,
+      types,
+      link,
+      copany_name,
+      name,
+      profession,
+      phone_number,
+      two_phone_num,
+      description,
+      image,
+      text,
+    };
+    data.push(newPosts)
+    write("activate",data)
   } catch (error) {
     console.log(error.message);
-    
   }
-}
-
+};
 
 const ACTIVATE = (req, res, next) => {
   const { access_token } = req.headers;
@@ -54,7 +82,6 @@ const ACTIVATE = (req, res, next) => {
     const byId = ids ? master.id == ids : true;
     return byId;
   });
-
 
   if (!activate[0]) {
     const newData = {
@@ -81,12 +108,10 @@ const ACTIVATE = (req, res, next) => {
       message: "add",
     });
   }
-
 };
 
 export default {
   LOGIN,
   ACTIVATE,
-  addPost
+  addPost,
 };
-
